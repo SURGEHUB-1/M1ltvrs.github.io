@@ -1,4 +1,4 @@
-﻿// Snow animation
+﻿
 const canvas = document.getElementById('snow');
 const ctx = canvas.getContext('2d');
 
@@ -59,12 +59,12 @@ window.addEventListener('resize', () => {
 });
 
 
-// Sound effects
+
 const clickSound = document.getElementById('click-sound');
 const hoverSound = document.getElementById('hover-sound');
 
 
-// Add click sounds to all buttons and links
+
 document.querySelectorAll('button, a').forEach(el => {
     el.addEventListener('click', () => {
         clickSound.currentTime = 0;
@@ -78,7 +78,7 @@ document.querySelectorAll('button, a').forEach(el => {
 });
 
 
-// Music player
+
 const audio = document.getElementById('audio');
 const songBtns = document.querySelectorAll('.song-btn');
 const logo = document.querySelector('.logo');
@@ -88,19 +88,18 @@ songBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         const song = btn.getAttribute('data-song');
         
-        // If clicking the same song that's playing
+       
         if (currentButton === btn && !audio.paused) {
             audio.pause();
             return;
         }
         
-        // If clicking same song that's paused
+       
         if (currentButton === btn && audio.paused) {
             audio.play();
             return;
         }
         
-        // If clicking a different song
         songBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         currentButton = btn;
@@ -112,7 +111,7 @@ songBtns.forEach(btn => {
     });
 });
 
-// Purple pulse when playing
+
 audio.addEventListener('play', () => {
     logo.classList.add('playing');
 });
@@ -125,7 +124,7 @@ audio.addEventListener('ended', () => {
     logo.classList.remove('playing');
 });
 
-// Make first song look selected on page load
+
 if (songBtns.length > 0) {
     songBtns[0].classList.add('active');
 }
